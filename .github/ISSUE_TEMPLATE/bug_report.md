@@ -1,38 +1,80 @@
----
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+description: Report something broken in ProCards.
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this. Please give enough detail for us to reproduce the issue quickly.
 
----
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly and include what you were trying to do.
+      placeholder: When I open Portfolio and switch to All, the x-axis labels overlap on Android.
+    validations:
+      required: true
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: The chart labels should space themselves without overlapping.
+    validations:
+      required: true
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List exact steps so we can reproduce the issue.
+      placeholder: |
+        1. Open the app
+        2. Go to Portfolio
+        3. Switch range to All
+        4. Observe the x-axis labels
+    validations:
+      required: true
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - iPhone / iOS
+        - Android
+        - Web
+        - Other / Unknown
+    validations:
+      required: true
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+  - type: input
+    id: device
+    attributes:
+      label: Device model
+      description: For example, iPhone 15 Pro, Pixel 8, Galaxy S24.
+      placeholder: Pixel 8
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+  - type: input
+    id: app_version
+    attributes:
+      label: App version
+      description: Include the app version or build number if you know it.
+      placeholder: 1.0.0 (123)
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or screen recordings
+      description: Drag images into the issue or paste links here.
+      placeholder: Add screenshots, videos, or links here.
 
-**Additional context**
-Add any other context about the problem here.
+  - type: textarea
+    id: extra_context
+    attributes:
+      label: Anything else?
+      description: Include network conditions, account state, or anything else that might matter.
+      placeholder: This only happens when Dynamic Type is set to Large.

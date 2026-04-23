@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProCards Feedback</title>
+    <meta
+      name="description"
+      content="Public issue and feature request portal for ProCards."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg-top: #1b48d7;
+        --bg-mid: #4820c9;
+        --bg-bottom: #98005f;
+        --ink: #1d1744;
+        --muted: rgba(29, 23, 68, 0.72);
+        --panel: rgba(255, 255, 255, 0.92);
+        --panel-border: rgba(173, 159, 255, 0.45);
+        --panel-shadow: 0 24px 80px rgba(28, 12, 66, 0.22);
+        --primary: #4820c9;
+        --primary-strong: #2c4fdf;
+        --accent: #98005f;
+        --white: #fff;
+        --radius-xl: 28px;
+        --radius-lg: 22px;
+        --max: 1140px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(255, 255, 255, 0.18),
+            transparent 28%
+          ),
+          linear-gradient(
+            140deg,
+            var(--bg-top) 0%,
+            var(--bg-mid) 54%,
+            var(--bg-bottom) 100%
+          );
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(calc(100% - 32px), var(--max));
+        margin: 0 auto;
+        padding: 28px 0 56px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 36px;
+        background:
+          radial-gradient(
+            circle at right top,
+            rgba(255, 255, 255, 0.12),
+            transparent 30%
+          ),
+          rgba(8, 5, 31, 0.12);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--panel-shadow);
+        padding: 32px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: var(--white);
+      }
+
+      .brand-mark {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 18px;
+        background: linear-gradient(
+          140deg,
+          rgba(27, 72, 215, 0.95),
+          rgba(72, 32, 201, 0.98) 56%,
+          rgba(152, 0, 95, 0.95)
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 10px 24px rgba(3, 3, 17, 0.22);
+      }
+
+      .brand-mark img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+      }
+
+      .brand-copy {
+        display: grid;
+        gap: 2px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.86rem;
+        letter-spacing: 0.14em;
+      }
+
+      .brand-copy span {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.9fr);
+        gap: 28px;
+        margin-top: 24px;
+        align-items: start;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(2.3rem, 4vw, 4.4rem);
+        line-height: 0.95;
+        color: var(--white);
+        max-width: 10ch;
+      }
+
+      .hero p {
+        margin: 18px 0 0;
+        max-width: 58ch;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .hero-links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 20px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        background: var(--white);
+        color: var(--primary);
+        box-shadow: 0 12px 28px rgba(9, 3, 33, 0.18);
+      }
+
+      .button-secondary {
+        color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 14px;
+      }
+
+      .side-card,
+      .card,
+      .step {
+        border-radius: 24px;
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 20px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 12px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+      }
+
+      .side-card strong,
+      .step strong {
+        display: block;
+        font-size: 1.1rem;
+        line-height: 1.2;
+      }
+
+      .side-card p,
+      .card p,
+      .step p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .content,
+      .steps {
+        display: grid;
+        gap: 18px;
+        margin-top: 22px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 1.6rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .button-solid {
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          var(--primary-strong),
+          var(--primary)
+        );
+      }
+
+      .button-outline {
+        color: var(--primary);
+        border: 1px solid rgba(72, 32, 201, 0.18);
+        background: rgba(72, 32, 201, 0.06);
+      }
+
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        margin-bottom: 14px;
+        font-weight: 800;
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          var(--primary-strong),
+          var(--accent)
+        );
+      }
+
+      .footer {
+        margin-top: 20px;
+        padding: 18px 22px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .footer a {
+        color: var(--white);
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .content,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(calc(100% - 20px), var(--max));
+          padding-top: 18px;
+          padding-bottom: 28px;
+        }
+
+        .hero {
+          border-radius: 28px;
+          padding: 20px;
+        }
+
+        .brand {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="brand">
+          <span class="brand-mark">
+            <img src="./assets/procards-logo-white.png" alt="ProCards logo" />
+          </span>
+          <div class="brand-copy">
+            <strong>PROCARDS</strong>
+            <span>Public feedback portal</span>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">PRODUCT FEEDBACK</span>
+            <h1>Submit bugs and feature requests in one place.</h1>
+            <p>
+              Tell us what is working, what is broken, and what you want to see
+              next in ProCards. Use the forms below to report bugs, request new
+              features, and help us prioritize improvements.
+            </p>
+            <div class="hero-links">
+              <a
+                class="button button-primary"
+                href="https://github.com/ProCards-AI/procards-feedback/issues/new?template=bug_report.yml"
+              >
+                Report a bug
+              </a>
+              <a
+                class="button button-secondary"
+                href="https://github.com/ProCards-AI/procards-feedback/issues/new?template=feature_request.yml"
+              >
+                Request a feature
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-side">
+            <div class="side-card">
+              <span class="eyebrow">WHAT TO SHARE</span>
+              <strong
+                >The best reports include screenshots, device details, and clear
+                steps.</strong
+              >
+              <p>
+                If something broke, tell us exactly what you were doing and what
+                you expected to happen instead.
+              </p>
+            </div>
+            <div class="side-card">
+              <span class="eyebrow">TIP</span>
+              <strong>Search existing issues before posting a new one.</strong>
+              <p>
+                If someone already reported the same problem or idea, add your
+                context there instead of opening a duplicate thread.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <article class="card">
+          <span class="eyebrow">BUG REPORTS</span>
+          <h2>Something is broken</h2>
+          <p>
+            Use this when the app behaves incorrectly, crashes, shows bad data,
+            or fails on a specific device or platform.
+          </p>
+          <div class="actions">
+            <a
+              class="button button-solid"
+              href="https://github.com/ProCards-AI/procards-feedback/issues/new?template=bug_report.yml"
+            >
+              Open bug form
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">FEATURE REQUESTS</span>
+          <h2>Suggest an improvement</h2>
+          <p>
+            Use this when you want a new workflow, a quality-of-life change, or
+            a better way to do something that already exists.
+          </p>
+          <div class="actions">
+            <a
+              class="button button-solid"
+              href="https://github.com/ProCards-AI/procards-feedback/issues/new?template=feature_request.yml"
+            >
+              Open feature form
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">EXISTING THREADS</span>
+          <h2>Check what’s already open</h2>
+          <p>
+            Before filing a new request, browse the current backlog and add
+            context to an existing thread if someone already reported the same
+            thing.
+          </p>
+          <div class="actions">
+            <a
+              class="button button-outline"
+              href="https://github.com/ProCards-AI/procards-feedback/issues"
+            >
+              View GitHub issues
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="steps">
+        <article class="step">
+          <span class="step-number">1</span>
+          <strong>Choose the right form</strong>
+          <p>
+            Bug reports and feature requests are separated so the issue body
+            stays structured and easy to triage.
+          </p>
+        </article>
+        <article class="step">
+          <span class="step-number">2</span>
+          <strong>Submit enough context</strong>
+          <p>
+            Device details, screenshots, and reproducible steps make bug reports
+            far more useful than short one-line complaints.
+          </p>
+        </article>
+        <article class="step">
+          <span class="step-number">3</span>
+          <strong>Track the thread on GitHub</strong>
+          <p>
+            Once the issue is open, updates, clarifying questions, and status
+            changes all happen in the same public thread.
+          </p>
+        </article>
+      </section>
+
+      <div class="footer">
+        Thanks for helping improve ProCards. If you need direct help with your
+        account or billing, email
+        <a href="mailto:support@procards.ai">support@procards.ai</a>.
+      </div>
+    </main>
+  </body>
+</html>

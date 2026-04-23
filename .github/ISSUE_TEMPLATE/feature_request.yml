@@ -1,0 +1,78 @@
+name: Feature request
+description: Suggest an improvement or new capability for ProCards.
+title: '[Feature]: '
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. Clear problem statements and concrete examples help us evaluate requests faster.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Feature summary
+      description: A short name for the request.
+      placeholder: Add bulk export by folder
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Explain the pain point first.
+      placeholder: I need to send folder inventory to buyers, but exporting one card at a time is too slow.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to see?
+      description: Describe the ideal solution in concrete terms.
+      placeholder: Add an Export button inside each folder that generates a CSV with card details and images.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
+      description: Tell us how you work around this today, if at all.
+      placeholder: I currently copy inventory manually into a spreadsheet.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Portfolio
+        - Inventory
+        - AI Scan
+        - Finite
+        - Storefront
+        - Messaging
+        - Billing
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: How important is this to you?
+      options:
+        - Nice to have
+        - Important
+        - Critical
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Mockups, examples, or references
+      description: Add screenshots, links, or examples from other products if they help explain the request.
+      placeholder: Add screenshots, links, or short examples here.
